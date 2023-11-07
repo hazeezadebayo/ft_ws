@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="default">
+  <!-- <plugin name="gazebo_ros_state" filename="libgazebo_ros_state.so"/> -->
+
+   <!-- <gravity>0 0 -9.8</gravity>  -->
+   <gravity>0 0 -9.8</gravity> 
+
+    <!-- <physics default="0" name="default_physics" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics> -->
+    <physics name="default_physics" default="0" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+      <!-- <type>quick</type> -->
+      <!-- <ode>
+        <solver>
+          <type>world</type>    
+          <iters>50</iters>
+          <sor>1.0</sor> 
+          <use_dynamic_moi_rescaling>false</use_dynamic_moi_rescaling>
+        </solver>
+      </ode> -->
+    </physics>
+
+
+    <!-- A ground plane -->
+    <!-- <include>
+      <uri>model://ground_plane</uri>
+    </include> -->
+    <model name="ground_plane">
+      <static>false</static>
+    </model> 
+
+
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+  </world>
+</sdf>
