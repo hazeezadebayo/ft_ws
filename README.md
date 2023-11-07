@@ -1,7 +1,7 @@
 FT-Sensor and ROS control behavior test 
 ===============================
 
-arbitrary robot arm model name chosen coincidentally AR3. urdf describes a 2-jointed robotic arm provided in both ROS1 and ROS2 Packages. docker files were provided for ease of reproducibility. The observed problem is that gazebo `<plugin filename="libgazebo_ros_control.so" name="control"/>` has different behaviors for both ros1 and ros2. This implementation leads to discrepancies in the published `force-torque` wrench values given any joint command. When this plugin is removed, wrench values published in both ros1 and ros2 are similar/same. Using J2 as example, the below images and recreation procedure is provided:
+arbitrary robot arm model name chosen coincidentally AR3. urdf describes a 2-jointed robotic arm provided in both ROS1 and ROS2 Packages. docker files were provided for ease of reproducibility. The observed problem is that gazebo `<plugin filename="libgazebo_ros_control.so" name="blahblahblah"/>` has different behaviors for both ros1 and ros2. This implementation leads to discrepancies in the published `force-torque` wrench values given any joint command. When this plugin is removed, wrench values published in both ros1 and ros2 are similar/same. Using J2 as example, the below images and recreation procedure is provided:
 
 
 
