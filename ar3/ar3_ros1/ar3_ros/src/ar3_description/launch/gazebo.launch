@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!--Robot description and related parameter files -->
+  <!-- <param name="robot_description" textfile="$(find ar3_description)/urdf/ar3.urdf.xacro"/>  -->
+  <arg name="model" default="$(find ar3_description)/urdf/ar3.urdf.xacro"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+
+
+  <!-- Controller  -->
+  <rosparam file="$(find ar3_description)/config/ar3_control.yaml"/>
+  <rosparam file="$(find ar3_description)/config/joint_state_controller.yaml"/>
+  <node name="Controller_Spawner" pkg="controller_manager" type="spawner" 
+        args="joint_state_controller ar3_controller"/>
+
+  <!-- activating joint_state_publisher and robot_state publisher and joint_state_publisher -->
+  <node name="RSP" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+
+  <!-- including Gazebo world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+
+  <!-- Executing Gazebo with robot -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+        args="-param robot_description -urdf -model ar3_robot -z 0.4"/>
+
+</launch>
